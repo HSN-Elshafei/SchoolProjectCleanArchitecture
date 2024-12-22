@@ -126,11 +126,17 @@
   <data name="Deleted" xml:space="preserve">
     <value>Deleted Successfully</value>
   </data>
+  <data name="Exist" xml:space="preserve">
+    <value>It is Exist</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="NotEmpty" xml:space="preserve">
     <value>Name Must not Empty</value>
+  </data>
+  <data name="NotExist" xml:space="preserve">
+    <value>It is Not Exist</value>
   </data>
   <data name="NotFound" xml:space="preserve">
     <value>This Opject not Found</value>

@@ -12,5 +12,7 @@
 		public const string Name = "Name";
 		public const string NotEmpty = "NotEmpty";
 		public const string NotNull = "NotNull";
+		public const string Exist = "Exist";
+		public const string NotExist = "NotExist";
 	}
 }
