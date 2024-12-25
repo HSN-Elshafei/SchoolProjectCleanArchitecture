@@ -6,7 +6,9 @@ using SchoolProject.Data.Entities.Identity;
 
 namespace SchoolProject.Infrastructure.Data
 {
-	public class ApplicationDBContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+	public class ApplicationDBContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>,
+														  IdentityUserRole<int>, IdentityUserLogin<int>,
+														  IdentityRoleClaim<int>, IdentityUserToken<int>>
 	{
 		// Parameterless constructor
 		public ApplicationDBContext() { }

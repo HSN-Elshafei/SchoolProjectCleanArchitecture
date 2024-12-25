@@ -10,12 +10,12 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
 		#region Fields
 		protected readonly IStudentService _studentService;
 		protected readonly IDepartmentService _departmentService;
-		protected readonly IStringLocalizer<ShearedResources> _stringLocalizer;
+		protected readonly IStringLocalizer<SharedResources> _stringLocalizer;
 
 		#endregion
 
 		#region Ctor
-		public StudentValidator(IStudentService studentService, IStringLocalizer<ShearedResources> stringLocalizer, IDepartmentService departmentService)
+		public StudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer, IDepartmentService departmentService)
 		{
 			_studentService = studentService;
 			_stringLocalizer = stringLocalizer;

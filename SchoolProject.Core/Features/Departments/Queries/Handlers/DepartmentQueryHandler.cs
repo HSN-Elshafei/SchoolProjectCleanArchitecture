@@ -19,15 +19,14 @@ namespace SchoolProject.Core.Features.Departments.Queries.Handlers
 		private readonly IDepartmentService _departmentService;
 		private readonly IStudentService _studentService;
 		private readonly IMapper _mapper;
-		private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
+		//private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
 		#endregion
 
 		#region Ctor
-		public DepartmentQueryHandler(IDepartmentService departmentService, IMapper mapper, IStringLocalizer<ShearedResources> stringLocalizer, IStudentService studentService) : base(stringLocalizer)
+		public DepartmentQueryHandler(IDepartmentService departmentService, IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer, IStudentService studentService) : base(stringLocalizer)
 		{
 			_departmentService = departmentService;
 			_mapper = mapper;
-			_stringLocalizer = stringLocalizer;
 			_studentService = studentService;
 		}
 		#endregion
@@ -37,7 +36,7 @@ namespace SchoolProject.Core.Features.Departments.Queries.Handlers
 			var response = await _departmentService.GetDepartmentByIdAsync(request.Id);
 			if (response == null)
 			{
-				return NotFound<GetDepartmentResponse>(_stringLocalizer[ShearedResourcesKeys.NotFound]);
+				return NotFound<GetDepartmentResponse>(_stringLocalizer[SharedResourcesKeys.NotFound]);
 			}
 			var mapper = _mapper.Map<GetDepartmentResponse>(response);
 			Expression<Func<Student, StudentResponse>> expression = e => new StudentResponse(e.StudID, e.Localize(e.NameAr, e.Name));

@@ -15,7 +15,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
 		#endregion
 
 		#region Ctor
-		public AddStudentValidator(IStudentService studentService, IStringLocalizer<ShearedResources> stringLocalizer, IDepartmentService departmentService) : base(studentService, stringLocalizer, departmentService)
+		public AddStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer, IDepartmentService departmentService) : base(studentService, stringLocalizer, departmentService)
 		{
 			ApplyValidationRuels();
 			ApplyCustomValidationRuels();
@@ -25,20 +25,20 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
 		#region Actions
 		public void ApplyValidationRuels()
 		{
-			RuleFor(s => s.Name).NotEmpty().WithMessage($"{_stringLocalizer[ShearedResourcesKeys.NotEmpty]}")
-								.NotNull().WithMessage($"{_stringLocalizer[ShearedResourcesKeys.NotNull]}");
+			RuleFor(s => s.Name).NotEmpty().WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotEmpty]}")
+								.NotNull().WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotNull]}");
 		}
 		public void ApplyCustomValidationRuels()
 		{
 			RuleFor(s => s.Phone)
 				.MustAsync(async (Key, CancellationToken) => !await _studentService
 				.IsStudentExistAsync(Key))
-				.WithMessage($"{_stringLocalizer[ShearedResourcesKeys.Exist]}");
+				.WithMessage($"{_stringLocalizer[SharedResourcesKeys.Exist]}");
 
 			RuleFor(s => s.DeptId)
 				.MustAsync(async (Key, CancellationToken) => await _departmentService
 				.IsDepartmentExistAsync(Key))
-				.WithMessage($"{_stringLocalizer[ShearedResourcesKeys.NotExist]}");
+				.WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotExist]}");
 		}
 		#endregion
 	}

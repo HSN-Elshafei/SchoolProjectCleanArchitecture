@@ -22,9 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\ApplicationUsers\Queries\" />
     <Folder Include="Features\Departments\Commands\Handlers\" />
     <Folder Include="Features\Departments\Commands\Models\" />
     <Folder Include="Features\Departments\Commands\Validatiors\" />
+    <Folder Include="Mapping\ApplicationUserMapping\QueryMapping\" />
     <Folder Include="Mapping\DepartmentMapping\CommandMapping\" />
   </ItemGroup>
 
