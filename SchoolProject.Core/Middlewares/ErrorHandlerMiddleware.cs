@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using SchoolProject.Core.Bases;
-using System.Data.Entity.Infrastructure;
 using System.Net;
 using System.Text.Json;
 

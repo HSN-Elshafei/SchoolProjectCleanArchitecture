@@ -1,33 +1,45 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Core.Resources;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Students.Commands.Validatiors
 {
-	public class EditStudentValidator : AbstractValidator<EditStudentCommand>
+	public class EditStudentValidator : StudentValidator<EditStudentCommand>
 	{
 		#region Fields
-		private readonly IStudentService _studentService;
+		//private readonly IStudentService _studentService;
+		//private readonly IDepartmentService _departmentService;
+		//private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
 		#endregion
 
 		#region Ctor
-		public EditStudentValidator(IStudentService studentService)
+		public EditStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer, IDepartmentService departmentService) : base(studentService, stringLocalizer, departmentService)
 		{
-			_studentService = studentService;
 			ApplyValidationRuels();
 			ApplyCustomValidationRuels();
 		}
 		#endregion
 
+
 		#region Actions
 		public void ApplyValidationRuels()
 		{
-			RuleFor(s => s.Name).NotEmpty().WithMessage($"Name Must not Empty")
-								.NotNull().WithMessage($"Name Must not Null");
+			RuleFor(s => s.Name).NotEmpty().WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotEmpty]}")
+								.NotNull().WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotNull]}");
 		}
 		public void ApplyCustomValidationRuels()
 		{
-			RuleFor(s => s.Phone).MustAsync(async (model, Key, CancellationToken) => !await _studentService.IsStudentExistAsync(Key, model.Id)).WithMessage($"This Student Exist");
+			RuleFor(s => s.Phone)
+				.MustAsync(async (Key, CancellationToken) => !await _studentService
+				.IsStudentExistAsync(Key))
+				.WithMessage($"{_stringLocalizer[SharedResourcesKeys.Exist]}");
+
+			RuleFor(s => s.DeptId)
+				.MustAsync(async (Key, CancellationToken) => await _departmentService
+				.IsDepartmentExistAsync(Key))
+				.WithMessage($"{_stringLocalizer[SharedResourcesKeys.NotExist]}");
 		}
 		#endregion
 	}

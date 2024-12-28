@@ -1,6 +1,6 @@
 ﻿namespace SchoolProject.Core.Resources
 {
-	public static class ShearedResourcesKeys
+	public static class SharedResourcesKeys
 	{
 		public const string Required = "Required";
 		public const string NotFound = "NotFound";
@@ -12,5 +12,11 @@
 		public const string Name = "Name";
 		public const string NotEmpty = "NotEmpty";
 		public const string NotNull = "NotNull";
+		public const string Exist = "Exist";
+		public const string NotExist = "NotExist";
+		public const string EmailExist = "EmailExist";
+		public const string UserNameExist = "UserNameExist";
+		public const string FaildToAddUser = "FaildToAddUser";
+
 	}
 }

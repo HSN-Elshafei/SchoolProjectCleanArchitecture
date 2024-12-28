@@ -5,8 +5,8 @@ namespace SchoolProject.Core.Bases
 {
 	public class ResponseHandler
 	{
-		private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
-		public ResponseHandler(IStringLocalizer<ShearedResources> stringLocalizer)
+		protected readonly IStringLocalizer<SharedResources> _stringLocalizer;
+		public ResponseHandler(IStringLocalizer<SharedResources> stringLocalizer)
 		{
 			_stringLocalizer = stringLocalizer;
 		}
@@ -16,7 +16,7 @@ namespace SchoolProject.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.OK,
 				Succeeded = true,
-				Message = Message == null ? _stringLocalizer[ShearedResourcesKeys.Deleted] : Message
+				Message = Message == null ? _stringLocalizer[SharedResourcesKeys.Deleted] : Message
 			};
 		}
 		public Response<T> Success<T>(T entity, object Meta = null)
@@ -26,7 +26,7 @@ namespace SchoolProject.Core.Bases
 				Data = entity,
 				StatusCode = System.Net.HttpStatusCode.OK,
 				Succeeded = true,
-				Message = $"{_stringLocalizer[ShearedResourcesKeys.Succesed]}",
+				Message = $"{_stringLocalizer[SharedResourcesKeys.Succesed]}",
 				Meta = Meta
 			};
 		}
@@ -36,7 +36,7 @@ namespace SchoolProject.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.OK,
 				Succeeded = true,
-				Message = Message == null ? _stringLocalizer[ShearedResourcesKeys.Updated] : Message,
+				Message = Message == null ? _stringLocalizer[SharedResourcesKeys.Updated] : Message,
 				Meta = Meta
 			};
 		}
@@ -75,7 +75,7 @@ namespace SchoolProject.Core.Bases
 			{
 				StatusCode = System.Net.HttpStatusCode.NotFound,
 				Succeeded = false,
-				Message = message == null ? _stringLocalizer[ShearedResourcesKeys.NotFound] : message
+				Message = message == null ? _stringLocalizer[SharedResourcesKeys.NotFound] : message
 			};
 		}
 
@@ -86,7 +86,7 @@ namespace SchoolProject.Core.Bases
 				Data = entity,
 				StatusCode = System.Net.HttpStatusCode.Created,
 				Succeeded = true,
-				Message = $"{_stringLocalizer[ShearedResourcesKeys.Created]}",
+				Message = $"{_stringLocalizer[SharedResourcesKeys.Created]}",
 				Meta = Meta
 			};
 		}

@@ -17,15 +17,14 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
 		#region Fields
 		private readonly IStudentService _studentService;
 		private readonly IMapper _mapper;
-		private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
+		//private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
 		#endregion
 
 		#region Ctor
-		public StudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<ShearedResources> stringLocalizer) : base(stringLocalizer)
+		public StudentCommandHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
 		{
 			_studentService = studentService;
 			_mapper = mapper;
-			_stringLocalizer = stringLocalizer;
 		}
 		#endregion
 

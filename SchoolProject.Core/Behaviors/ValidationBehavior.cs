@@ -9,8 +9,8 @@ namespace SchoolProject.Core.Behaviors
 	   where TRequest : IRequest<TResponse>
 	{
 		private readonly IEnumerable<IValidator<TRequest>> _validators;
-		private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
-		public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, IStringLocalizer<ShearedResources> stringLocalizer)
+		private readonly IStringLocalizer<SharedResources> _stringLocalizer;
+		public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, IStringLocalizer<SharedResources> stringLocalizer)
 		{
 			_validators = validators;
 			_stringLocalizer = stringLocalizer;

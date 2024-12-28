@@ -1,6 +1,6 @@
 ﻿namespace SchoolProject.Core.Resources
 {
-	public class ShearedResources
+	public class SharedResources
 	{
 	}
 }

@@ -126,11 +126,23 @@
   <data name="Deleted" xml:space="preserve">
     <value>تم الحذف بنجاح</value>
   </data>
+  <data name="EmailExist" xml:space="preserve">
+    <value>الايميل الذي ادخلتو موجود بالفعل</value>
+  </data>
+  <data name="Exist" xml:space="preserve">
+    <value>هذا العنصر موجود</value>
+  </data>
+  <data name="FaildToAddUser" xml:space="preserve">
+    <value>حدث خطا اثناء اضافة المستخدم</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
   <data name="NotEmpty" xml:space="preserve">
     <value>لا يمكن ترك العنصر فارغ</value>
+  </data>
+  <data name="NotExist" xml:space="preserve">
+    <value>هذا العنصر غير موجود</value>
   </data>
   <data name="NotFound" xml:space="preserve">
     <value>غير موجود</value>
@@ -146,5 +158,8 @@
   </data>
   <data name="Updated" xml:space="preserve">
     <value>تم التعديل بنجاح</value>
+  </data>
+  <data name="UserNameExist" xml:space="preserve">
+    <value>اسم المستخدم موجود بالفعل</value>
   </data>
 </root>

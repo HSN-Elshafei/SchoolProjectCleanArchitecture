@@ -21,15 +21,14 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 		#region Fields
 		private readonly IStudentService _studentService;
 		private readonly IMapper _mapper;
-		private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
+		//private readonly IStringLocalizer<ShearedResources> _stringLocalizer;
 		#endregion
 
 		#region Ctor
-		public StudentQueryHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<ShearedResources> stringLocalizer) : base(stringLocalizer)
+		public StudentQueryHandler(IStudentService studentService, IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
 		{
 			_studentService = studentService;
 			_mapper = mapper;
-			_stringLocalizer = stringLocalizer;
 		}
 		#endregion
 
@@ -46,7 +45,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 			var student = await _studentService.GetStudentByIdAsync(request.Id);
 			if (student == null)
 			{
-				return NotFound<GetStudentResponse>(_stringLocalizer[ShearedResourcesKeys.NotFound]);
+				return NotFound<GetStudentResponse>(_stringLocalizer[SharedResourcesKeys.NotFound]);
 			}
 			return Success(_mapper.Map<GetStudentResponse>(student));
 		}
