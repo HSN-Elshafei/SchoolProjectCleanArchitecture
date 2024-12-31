@@ -17,6 +17,13 @@
 		public const string EmailExist = "EmailExist";
 		public const string UserNameExist = "UserNameExist";
 		public const string FaildToAddUser = "FaildToAddUser";
+		public const string UserNotExist = "UserNotExist";
+		public const string FaildInUserNameOrPassword = "FaildInUserNameOrPassword";
+		public const string InvalidToken = "InvalidToken";
+		public const string TokenIsNotExpired = "TokenIsNotExpired";
+		public const string RefreshTokenIsNotFound = "RefreshTokenIsNotFound";
+		public const string RefreshTokenIsExpired = "RefreshTokenIsExpired";
+		public const string TokenIsExpired = "TokenIsExpired";
 
 	}
 }
