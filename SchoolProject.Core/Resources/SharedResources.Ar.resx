@@ -132,8 +132,14 @@
   <data name="Exist" xml:space="preserve">
     <value>هذا العنصر موجود</value>
   </data>
+  <data name="FaildInUserNameOrPassword" xml:space="preserve">
+    <value>خطا في اسم المستخدم او كلمة السر</value>
+  </data>
   <data name="FaildToAddUser" xml:space="preserve">
     <value>حدث خطا اثناء اضافة المستخدم</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>خطا في رمز الوصول </value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
@@ -150,16 +156,31 @@
   <data name="NotNull" xml:space="preserve">
     <value>لا يمكن ترك العنصر فارغ</value>
   </data>
+  <data name="RefreshTokenIsExpired" xml:space="preserve">
+    <value>رمز التنشيط منتهي الصلاحية</value>
+  </data>
+  <data name="RefreshTokenIsNotFound" xml:space="preserve">
+    <value>رمز التنشيط غير موجود</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
   </data>
   <data name="Succesed" xml:space="preserve">
     <value>تمت العليه بنجاح</value>
   </data>
+  <data name="TokenIsExpired" xml:space="preserve">
+    <value>رمز الوصول هذا منتهي الصلاحية</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>رمز الوصول هذا غير منتهي الصلاحية</value>
+  </data>
   <data name="Updated" xml:space="preserve">
     <value>تم التعديل بنجاح</value>
   </data>
   <data name="UserNameExist" xml:space="preserve">
     <value>اسم المستخدم موجود بالفعل</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>هذا المستخدم غير موجود</value>
   </data>
 </root>

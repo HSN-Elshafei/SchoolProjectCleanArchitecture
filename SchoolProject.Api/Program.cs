@@ -8,29 +8,26 @@ using SchoolProject.Infrastructure.Data;
 using SchoolProject.Service;
 using System.Globalization;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Database Configuration
 builder.Services.AddDbContext<ApplicationDBContext>(option =>
 {
 	option.UseSqlServer(builder.Configuration.GetConnectionString("dbContext"));
 });
 
-#region Dependency Injection
+// Dependency Injection
 builder.Services.AddInfrastructureDependencies()
 				.AddServiceDependencies()
 				.AddCoreDependencies()
-				.AddServiceRegistration();
-#endregion
+				.AddServiceRegistration(builder.Configuration);
 
-#region Localization
+// Localization
 builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization(opt =>
 {
@@ -40,33 +37,29 @@ builder.Services.AddLocalization(opt =>
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
 	List<CultureInfo> supportedCultures = new List<CultureInfo>
-		{
-			new CultureInfo("en-US"),
-			new CultureInfo("de-DE"),
-			new CultureInfo("fr-FR"),
-			new CultureInfo("ar-EG")
-		};
+	{
+		new CultureInfo("en-US"),
+		new CultureInfo("de-DE"),
+		new CultureInfo("fr-FR"),
+		new CultureInfo("ar-EG")
+	};
 
 	options.DefaultRequestCulture = new RequestCulture("en-US");
 	options.SupportedCultures = supportedCultures;
 	options.SupportedUICultures = supportedCultures;
 });
-#endregion
 
-#region CORS
+// CORS
 var CORS = "Allow_All";
 builder.Services.AddCors(options =>
 {
-	options.AddPolicy(name: CORS,
-					  policy =>
-					  {
-						  policy.AllowAnyHeader();
-						  policy.AllowAnyMethod();
-						  policy.AllowAnyOrigin();
-					  });
+	options.AddPolicy(name: CORS, policy =>
+	{
+		policy.AllowAnyHeader();
+		policy.AllowAnyMethod();
+		policy.AllowAnyOrigin();
+	});
 });
-#endregion
-
 
 var app = builder.Build();
 
@@ -77,19 +70,14 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
-#region Localization Middleware
 var options = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
 app.UseRequestLocalization(options.Value);
-#endregion
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
-
 app.UseHttpsRedirection();
-
 app.UseCors(CORS);
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

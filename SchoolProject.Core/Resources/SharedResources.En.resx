@@ -132,8 +132,14 @@
   <data name="Exist" xml:space="preserve">
     <value>It is Exist</value>
   </data>
+  <data name="FaildInUserNameOrPassword" xml:space="preserve">
+    <value>Faild in User Name or Password</value>
+  </data>
   <data name="FaildToAddUser" xml:space="preserve">
     <value>Faild To Add User</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Invalid Token</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -150,16 +156,31 @@
   <data name="NotNull" xml:space="preserve">
     <value>Name Must not Null</value>
   </data>
+  <data name="RefreshTokenIsExpired" xml:space="preserve">
+    <value>Refresh Token Is Not Found</value>
+  </data>
+  <data name="RefreshTokenIsNotFound" xml:space="preserve">
+    <value>Refresh Token Is Not Found</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
   </data>
   <data name="Succesed" xml:space="preserve">
     <value>Successfully ...</value>
   </data>
+  <data name="TokenIsExpired" xml:space="preserve">
+    <value>Token Is Expired</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>Token Is Not Expired</value>
+  </data>
   <data name="Updated" xml:space="preserve">
     <value>Updated Successfully</value>
   </data>
   <data name="UserNameExist" xml:space="preserve">
     <value>This User Name is Already Exist</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>This User Not Exist</value>
   </data>
 </root>

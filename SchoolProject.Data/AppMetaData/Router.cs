@@ -38,7 +38,20 @@
 			public const string ChangePassword = $"{Prefix}ChangePassword";
 			public const string Delete = $"{Prefix}Delete/{{id}}";
 			public const string Paginated = $"{Prefix}Paginated/List";
-
+		}
+		public static class Authentication
+		{
+			public const string Prefix = $"{Rule}Authentication/";
+			//public const string List = $"{Prefix}List";
+			//public const string GetById = $"{Prefix}{{id}}";
+			//public const string Add = $"{Prefix}Add";
+			//public const string Edit = $"{Prefix}Edit";
+			//public const string ChangePassword = $"{Prefix}ChangePassword";
+			//public const string Delete = $"{Prefix}Delete/{{id}}";
+			//public const string Paginated = $"{Prefix}Paginated/List";
+			public const string SignIn = $"{Prefix}SignIn";
+			public const string RefreshToken = $"{Prefix}RefreshToken";
+			public const string ValidateToken = $"{Prefix}ValidateToken";
 		}
 	}
 }
