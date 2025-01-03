@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>تم الاضافة بنجاح</value>
   </data>
+  <data name="AddFailed" xml:space="preserve">
+    <value>خطا في الاضافه</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>تم الاضافة بنجاح</value>
   </data>
@@ -137,6 +140,24 @@
   </data>
   <data name="FaildToAddUser" xml:space="preserve">
     <value>حدث خطا اثناء اضافة المستخدم</value>
+  </data>
+  <data name="FailedToAddNewClaims" xml:space="preserve">
+    <value>حدث حطأ اثناء اضافة صلاحيات الاستخدام الجديدة للمستخدمين</value>
+  </data>
+  <data name="FailedToAddNewRoles" xml:space="preserve">
+    <value>خطا اثناء اضافة الصلاحيات الجديده لهذا المستخدم</value>
+  </data>
+  <data name="FailedToRemoveOldClaims" xml:space="preserve">
+    <value>حدث حطأ اثناء حذف صلاحيات الاستخدام القديمة للمستخدمين</value>
+  </data>
+  <data name="FailedToRemoveOldRoles" xml:space="preserve">
+    <value>خطا اثناء حذف الصلاحيات القديمة لهذا المستخدم</value>
+  </data>
+  <data name="FailedToUpdateUserClaims" xml:space="preserve">
+    <value>حدث حطأ اثناء تحديث صلاحيات الاستخدام للمستخدمين</value>
+  </data>
+  <data name="FailedToUpdateUserRoles" xml:space="preserve">
+    <value>خطا اثناء تحديث الصلاحيات لهذا المستخدم</value>
   </data>
   <data name="InvalidToken" xml:space="preserve">
     <value>خطا في رمز الوصول </value>
@@ -164,6 +185,12 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="RoleIsExist" xml:space="preserve">
+    <value>هذه الصلاحيه موجوده بالفعل</value>
+  </data>
+  <data name="RoleIsUsed" xml:space="preserve">
+    <value>هذه الصلاحي مرتبطه بمستخدمين اخرين</value>
   </data>
   <data name="Succesed" xml:space="preserve">
     <value>تمت العليه بنجاح</value>

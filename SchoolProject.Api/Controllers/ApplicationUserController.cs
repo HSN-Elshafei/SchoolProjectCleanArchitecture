@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.Api.Bases;
 using SchoolProject.Core.Features.ApplicationUsers.Commands.Models;
 using SchoolProject.Core.Features.ApplicationUsers.Queries.Models;
@@ -7,6 +8,7 @@ using SchoolProject.Data.AppMetaData;
 namespace SchoolProject.Api.Controllers
 {
 	[ApiController]
+	[Authorize(Roles = "Admin")]
 	public class ApplicationUserController : AppControllerBase
 	{
 		[HttpGet(Router.ApplicationUser.Paginated)]

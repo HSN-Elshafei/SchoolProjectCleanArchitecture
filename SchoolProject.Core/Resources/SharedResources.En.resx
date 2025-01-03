@@ -120,6 +120,9 @@
   <data name="Added" xml:space="preserve">
     <value>Added Successfully</value>
   </data>
+  <data name="AddFailed" xml:space="preserve">
+    <value>Add Failed</value>
+  </data>
   <data name="Created" xml:space="preserve">
     <value>Created Successfully</value>
   </data>
@@ -137,6 +140,24 @@
   </data>
   <data name="FaildToAddUser" xml:space="preserve">
     <value>Faild To Add User</value>
+  </data>
+  <data name="FailedToAddNewClaims" xml:space="preserve">
+    <value>Failed To Add New Claims</value>
+  </data>
+  <data name="FailedToAddNewRoles" xml:space="preserve">
+    <value>Failed To Add New Roles</value>
+  </data>
+  <data name="FailedToRemoveOldClaims" xml:space="preserve">
+    <value>Failed To Remove Old Claims</value>
+  </data>
+  <data name="FailedToRemoveOldRoles" xml:space="preserve">
+    <value>FailedTo Remove Old Roles</value>
+  </data>
+  <data name="FailedToUpdateUserClaims" xml:space="preserve">
+    <value>Failed To Update User Claims</value>
+  </data>
+  <data name="FailedToUpdateUserRoles" xml:space="preserve">
+    <value>Failed To Update User Roles</value>
   </data>
   <data name="InvalidToken" xml:space="preserve">
     <value>Invalid Token</value>
@@ -164,6 +185,12 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>This Field is Required</value>
+  </data>
+  <data name="RoleIsExist" xml:space="preserve">
+    <value>Role Is Exist</value>
+  </data>
+  <data name="RoleIsUsed" xml:space="preserve">
+    <value>Role Is Used with Other Users</value>
   </data>
   <data name="Succesed" xml:space="preserve">
     <value>Successfully ...</value>

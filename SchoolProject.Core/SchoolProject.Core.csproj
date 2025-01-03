@@ -29,6 +29,7 @@
     <Folder Include="Features\Departments\Commands\Models\" />
     <Folder Include="Features\Departments\Commands\Validatiors\" />
     <Folder Include="Mapping\DepartmentMapping\CommandMapping\" />
+    <Folder Include="Mapping\RoleMapping\CommandMapping\" />
   </ItemGroup>
 
 </Project>

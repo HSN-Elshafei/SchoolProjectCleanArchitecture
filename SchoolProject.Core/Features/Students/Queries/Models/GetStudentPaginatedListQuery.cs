@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using SchoolProject.Core.Features.Students.Queries.Responses;
 using SchoolProject.Core.Wrappers;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Enums;
 
 namespace SchoolProject.Core.Features.Students.Queries.Models
 {
 
-	public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<GetStudentResponse>>
+    public class GetStudentPaginatedListQuery : IRequest<PaginatedResult<GetStudentResponse>>
 	{
 		public int PageNumber { get; set; }
 		public int PageSize { get; set; }
