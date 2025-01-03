@@ -7,11 +7,12 @@ using SchoolProject.Core.Features.Authentication.Commands.Models;
 using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helper;
+using SchoolProject.Data.Responses;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 {
-	public class AuthenticationCommandHandler : ResponseHandler,
+    public class AuthenticationCommandHandler : ResponseHandler,
 												 IRequestHandler<SignInAuthenticationCommand, Response<JwtAuthResponse>>,
 												 IRequestHandler<RefreshTokenCommand, Response<JwtAuthResponse>>
 	{
@@ -57,7 +58,7 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 			var jwtToken = await _authenticationService.ReadJWTTokenAsync(request.AccessToken);
 			var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == nameof(UserClaimModel.Id)).Value;
 			var userRefreshToken = await _authenticationService.GetUserRefreshTokenAsync(request.AccessToken, request.RefreshToken, userId);
-			string validation = await _authenticationService.ValidationAsync(jwtToken, userRefreshToken);
+			string validation = await _authenticationService.ValidateTokenAsync(jwtToken, userRefreshToken);
 
 			switch (validation)
 			{

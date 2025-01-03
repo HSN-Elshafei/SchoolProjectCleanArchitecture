@@ -8,7 +8,7 @@ using SchoolProject.Data.AppMetaData;
 namespace SchoolProject.Api.Controllers
 {
 	[ApiController]
-	[Authorize]
+	[Authorize(Roles = "Admin,User")]
 	public class StudentController : AppControllerBase
 	{
 		#region Fields

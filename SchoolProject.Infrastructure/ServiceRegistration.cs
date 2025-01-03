@@ -9,33 +9,32 @@ using SchoolProject.Data.Helper;
 using SchoolProject.Infrastructure.Data;
 using System.Text;
 
-namespace SchoolProject.Infrastructure
+namespace SchoolProject.Infrustructure
 {
 	public static class ServiceRegistration
 	{
 		public static IServiceCollection AddServiceRegistration(this IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddIdentity<User, IdentityRole<int>>(option =>
+			// Identity configuration
+			services.AddIdentity<User, Role>(options =>
 			{
-				option.Password.RequireDigit = true;
-				option.Password.RequireLowercase = true;
-				option.Password.RequireNonAlphanumeric = true;
-				option.Password.RequireUppercase = true;
-				option.Password.RequiredLength = 6;
-				option.Password.RequiredUniqueChars = 1;
+				options.Password.RequireDigit = true;
+				options.Password.RequireLowercase = true;
+				options.Password.RequireNonAlphanumeric = true;
+				options.Password.RequireUppercase = true;
+				options.Password.RequiredLength = 6;
+				options.Password.RequiredUniqueChars = 1;
 
-				option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-				option.Lockout.MaxFailedAccessAttempts = 5;
-				option.Lockout.AllowedForNewUsers = true;
+				options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+				options.Lockout.MaxFailedAccessAttempts = 5;
+				options.Lockout.AllowedForNewUsers = true;
 
-				option.User.AllowedUserNameCharacters =
-					"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-				option.User.RequireUniqueEmail = true;
-			}).AddEntityFrameworkStores<ApplicationDBContext>()
-			  .AddDefaultTokenProviders();
+				options.User.AllowedUserNameCharacters =
+				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+				options.User.RequireUniqueEmail = true;
+				options.SignIn.RequireConfirmedEmail = true;
 
-			// Add IHttpContextAccessor
-			services.AddHttpContextAccessor();
+			}).AddEntityFrameworkStores<ApplicationDBContext>().AddDefaultTokenProviders();
 
 			// JWT Authentication
 			var jwtSettings = new JwtSettings();
@@ -43,22 +42,28 @@ namespace SchoolProject.Infrastructure
 
 			services.AddSingleton(jwtSettings);
 
-			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-			   .AddJwtBearer(options =>
-			   {
-				   options.TokenValidationParameters = new TokenValidationParameters
-				   {
-					   ValidateIssuer = jwtSettings.ValidateIssuer,
-					   ValidIssuers = new[] { jwtSettings.Issuer },
-					   ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey,
-					   IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
-					   ValidAudience = jwtSettings.Audience,
-					   ValidateAudience = jwtSettings.ValidateAudience,
-					   ValidateLifetime = jwtSettings.ValidateLifeTime,
-				   };
-			   });
+			services.AddAuthentication(x =>
+			{
+				x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+			.AddJwtBearer(x =>
+			{
+				x.RequireHttpsMetadata = false;
+				x.SaveToken = true;
+				x.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuer = jwtSettings.ValidateIssuer,
+					ValidIssuers = new[] { jwtSettings.Issuer },
+					ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey,
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
+					ValidAudience = jwtSettings.Audience,
+					ValidateAudience = jwtSettings.ValidateAudience,
+					ValidateLifetime = jwtSettings.ValidateLifeTime,
+				};
+			});
 
-			// Swagger
+			// Swagger configuration
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "School Project", Version = "v1" });
@@ -87,6 +92,14 @@ namespace SchoolProject.Infrastructure
 						Array.Empty<string>()
 					}
 				});
+			});
+
+			// Authorization policies
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("CreateStudent", policy => policy.RequireClaim("Create Student", "True"));
+				options.AddPolicy("DeleteStudent", policy => policy.RequireClaim("Delete Student", "True"));
+				options.AddPolicy("EditStudent", policy => policy.RequireClaim("Edit Student", "True"));
 			});
 
 			return services;

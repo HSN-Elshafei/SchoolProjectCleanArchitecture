@@ -1,10 +1,10 @@
 ﻿using SchoolProject.Data.Entities;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Enums;
 
 namespace SchoolProject.Service.Abstracts
 
 {
-	public interface IStudentService
+    public interface IStudentService
 	{
 		public Task<List<Student>> GetStudentsListAsync();
 		public Task<Student> GetStudentByIdAsync(int id);

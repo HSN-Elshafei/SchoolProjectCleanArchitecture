@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
-using SchoolProject.Data.Helper;
+using SchoolProject.Data.Enums;
 using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Service.Implementations
 {
-	public class StudentService : IStudentService
+    public class StudentService : IStudentService
 	{
 		#region Fields
 		private readonly IStudentRepository _studentRepository;
